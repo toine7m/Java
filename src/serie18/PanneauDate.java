@@ -12,8 +12,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-;
-
 public class PanneauDate extends JPanel{
 
 	private JComboBox<Object> jour, mois, annee;
