@@ -1,35 +1,31 @@
-package serie18;
+package Serie18;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 
 public class Accueil extends JPanel{
 
-	private JLabel accueil0, accueil1, accueil2, accueil3, accueil4;
+	private JLabel accueil;
 	
 	public Accueil(){
-		
-		
-		
-		// question a poser cumuler JLabel ou /n ??  // possibilité de mettre tout dans le add ??
-		accueil0 = new JLabel("Bienvenue sur cette application.");
-		accueil1 = new JLabel("Je vous propose de réaliser certaines tâches comme:");
-		accueil2 = new JLabel("Lister différents contenus selon certains critères");	
-		accueil3 = new JLabel("Ajouter ou supprimer différentes informations");
-		accueil4 = new JLabel("Bonne visite !");	
-		setLayout(new GridLayout(15,1));
-		add(accueil0);
-		add(accueil1);
-		add(accueil2);
-		add(accueil3);
-		add(accueil4);
-		
-		
-		
+		setLayout(new GridLayout(1, 0, 0, 0));
+		accueil = new JLabel("<html><center><h1>Bienvenue sur cette application</h1> <h3><br\\>Je vous propose de rÃ©aliser certaines tÃ¢ches comme:  <br\\><br\\>	- Lister diffÃ©rents contenus selon certains critÃ¨res<br\\> - Ajouter ou supprimer diffÃ©rentes informations <br\\\\></h3><h2>Bonne visite !</h2></center></html>",SwingConstants.CENTER);
+		add(accueil);		
+	}
+	
+	private class Ecouteur implements ActionListener{
+		// objet evenement creer par java quand on appuie sur un boutton
+		public void actionPerformed(ActionEvent e){  
+			
+		}
 	}
 }
