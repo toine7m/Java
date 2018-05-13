@@ -1,4 +1,4 @@
-package Serie18;
+package serie18;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
