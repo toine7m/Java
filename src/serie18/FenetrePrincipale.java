@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 public class FenetrePrincipale extends JFrame{
 
 	private JMenuBar menuB;
-	private JMenu accueil, modification, listing;
-	private JMenuItem ajouter, supprimer, listingComplet, listingFamille, listingSection;
+	private JMenu accueil, modification, listing, other;
+	private JMenuItem ajouter, supprimer, listingComplet, listingFamille, listingSection, about, close;
 	private Accueil JPaccueil;
 	private Container cont;
 	private Ecouteur ecouteur;
@@ -30,18 +30,16 @@ public class FenetrePrincipale extends JFrame{
 		super("Gestion installations");
 		
 		this.connection = connection;
-		ecouteur = new Ecouteur();  // si on initialise pas l'écouteur est null
+		ecouteur = new Ecouteur();  // si on initialise pas l'Ã©couteur est null
 		
-		setExtendedState(JFrame.MAXIMIZED_BOTH); // est une méthode héritée de JFrame
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // est une mÃ©thode hÃ©ritÃ©e de JFrame
 		
 		menuB = new JMenuBar();
 		setJMenuBar(menuB);
 		
-		
-		
 		accueil = new JMenu("Accueil");
 		menuB.add(accueil);
-		//accueil.addActionListener(ecouteur);
+		accueil.addActionListener(ecouteur);
 				
 		modification = new JMenu("Modification");
 		menuB.add(modification);
@@ -57,7 +55,7 @@ public class FenetrePrincipale extends JFrame{
 		modification.add(supprimer);
 		supprimer.addActionListener(ecouteur);
 		
-		listingComplet = new JMenuItem("Liste Complète");
+		listingComplet = new JMenuItem("Liste ComplÃ¨te");
 		listing.add(listingComplet);
 		listingComplet.addActionListener(ecouteur);
 		
@@ -66,9 +64,21 @@ public class FenetrePrincipale extends JFrame{
 		
 		listingSection = new JMenuItem("Liste par Section");
 		listing.add(listingSection);
+
+		other = new JMenu("Other");
+		menuB.add(other);
+		
+		about = new JMenuItem("A propos");
+		other.add(about);
+		about.addActionListener(ecouteur);
+		
+		close = new JMenuItem("Fermer");
+		other.add(close);
+		close.addActionListener(ecouteur);
+		
 		
 		JPaccueil = new Accueil();
-		cont = getContentPane(); // je récupere le conteneur de la fenetre dans laquel je suis
+		cont = getContentPane(); // je rÃ©cupere le conteneur de la fenetre dans laquel je suis
 		cont.setLayout(new BorderLayout());
 		cont.add(JPaccueil, BorderLayout.CENTER);
 		
@@ -101,14 +111,26 @@ public class FenetrePrincipale extends JFrame{
 				cont.repaint();
 				FenetrePrincipale.this.setVisible(true);
 			}
-			/* if (e.getSource().equals(accueil)){
-				cont.removeAll();    // effacer les anciens affichages (cont = endroit ou on stock l'ensemble des panneau et autres éléments graphiques)
-				Accueil accueil = new Accueil();// initialise la variable av le nouveau panneau a afficher
-				cont.add(accueil, BorderLayout.CENTER);// le réajouter au panneau
-				cont.repaint(); // force la visualisation graphique du panneau (repeindre le containaire)
+			if (e.getSource().equals(accueil)){
+				cont.removeAll();    // effacer les anciens affichages (cont = endroit ou on stock l'ensemble des panneau et autres Ã©lÃ©ments graphiques)
+				Accueil f = new Accueil();// initialise la variable av le nouveau panneau a afficher
+				cont.add(f, BorderLayout.CENTER);// le rÃ©ajouter au panneau
+				cont.repaint(); // force la visualisation graphique du panneau (repeindre le container)
+				FenetrePrincipale.this.setVisible(true);
+				System.out.println("koukou");
+			}
+			
+			if (e.getSource().equals(about)){
+				cont.removeAll();
+				About f = new About();  // on change le panneau courant pour lui en mettre un nouveau
+				cont.add(f, BorderLayout.CENTER);
+				cont.repaint();
 				FenetrePrincipale.this.setVisible(true);
 			}
-			*/
+			
+			if (e.getSource().equals(close)) {
+		        System.exit(0);
+		      }   
 			
 			
 			
